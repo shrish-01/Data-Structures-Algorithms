@@ -47,7 +47,8 @@ public class MergeSort {
         }
 
         System.arraycopy(mix, 0, arr, originalStartIndex, mix.length);
-    }
+    } 
+
 
     // public static int[] mergeSort(int arr[]) {
 
