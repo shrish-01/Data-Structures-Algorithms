@@ -1,6 +1,7 @@
 // import java.util.Scanner;
 
 public class one {
+    // public static long ans;
     public static void main(String[] args) {
         // Scanner scn = new Scanner(System.in);
         // int n = scn.nextInt();
@@ -20,8 +21,51 @@ public class one {
         // printNumbers(10);
 
         // count of digits
-        int ans = counOfDigits(2833382);
+        // int ans = counOfDigits(2833382);
+        // System.out.println(ans);
+
+        // sum of digits
+        // int ans = sumOfDigits(12);
+        // System.out.println(ans);
+
+        // Multiplication of two numbers
+        // int ans = multiplyNums(4, 7);
+        // System.out.println(ans);
+
+        // Count number of zeros
+        // countZeros(120002200);
+        // System.out.println(ans);
+
+        // Geometric sum, 1 + 1/2 + 1/2^2 + 1/2^2 .... + 1/2^n
+        double ans = gsum(2);
         System.out.println(ans);
+    }
+
+    private static double gsum(int n) {
+        if(n == 0) {
+            return 1;
+        }
+        return gsum(n - 1) + (1 / Math.pow(2, n));
+    }
+
+    // private static void countZeros(long n) {
+    //     if(n == 0) return;
+    //     long lastDigit = n % 10;
+    //     if(lastDigit == 0) ans += 1;
+    //     countZeros(n/10);
+    // }
+
+    private static int multiplyNums(int i, int j) {
+        if(j == 0) {
+            return 0;
+        }
+        return multiplyNums(i, j - 1) + i;
+    }
+
+    private static int sumOfDigits(int n) {
+        if(n == 0) return 0;
+        int lastDigit = n % 10;
+        return sumOfDigits(n/10) + lastDigit;
     }
 
     private static int counOfDigits(int n) {
