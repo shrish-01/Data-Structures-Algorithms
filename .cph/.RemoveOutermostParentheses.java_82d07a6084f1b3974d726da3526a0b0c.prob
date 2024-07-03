@@ -1,1 +1,0 @@
-{"name":"Local: RemoveOutermostParentheses","url":"/home/shrish/Desktop/Utility/A-Z-DSASheet/RemoveOutermostParentheses.java","tests":[{"id":1716996796952,"input":"()(())(()())","output":"()()()"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/shrish/Desktop/Utility/A-Z-DSASheet/RemoveOutermostParentheses.java","group":"local","local":true}
