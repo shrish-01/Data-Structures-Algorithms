@@ -9,14 +9,17 @@ public class advanced {
 //        System.out.println();
 
         // replace character in a string
-        String str = "abcabcabc";
-        char[] arr = str.toCharArray();
-        replaceChars(arr, 'a', 'x', 0);
-        StringBuilder updatedStr = new StringBuilder();
-        for(char ch: arr) {
-            updatedStr.append(ch);
-        }
-        System.out.println(updatedStr);
+//        String str = "abcabcabc";
+//        char[] arr = str.toCharArray();
+//        replaceChars(arr, 'a', 'x', 0);
+//        StringBuilder updatedStr = new StringBuilder();
+//        for(char ch: arr) {
+//            updatedStr.append(ch);
+//        }
+//        System.out.println(updatedStr);
+
+        // remove consecutive duplicates
+        String str = "aabbbcdda"; // expecting an output: "abcda"
     }
 
     private static void replaceChars(char[] arr, char a, char x, int i) {
