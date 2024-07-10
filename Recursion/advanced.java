@@ -1,5 +1,7 @@
 //import java.util.Arrays;
 
+import java.util.ArrayList;
+
 public class advanced {
     public static void main(String[] args) {
         // recursively print a character array
@@ -19,7 +21,29 @@ public class advanced {
 //        System.out.println(updatedStr);
 
         // remove consecutive duplicates
-        String str = "aabbbcdda"; // expecting an output: "abcda"
+//        StringBuilder str = new StringBuilder("aaabbbccccccccccccdda"); // expecting an output: "abcda"
+////        for(int i = 0; i < str.length(); i++) {
+////            if(i == 1) {
+////                str.deleteCharAt(i);
+////            }
+////        }
+////        System.out.println(str);
+//        deleteConsecutiveDuplicates(str, 1, str.charAt(0));
+//        System.out.println(str);
+
+
+    }
+
+    private static void deleteConsecutiveDuplicates(StringBuilder str, int i, char prev) {
+        if(i == str.length()) {
+            return;
+        }
+        if(str.charAt(i) == prev) {
+            str.deleteCharAt(i);
+            deleteConsecutiveDuplicates(str, i, prev);
+        } else {
+            deleteConsecutiveDuplicates(str, i + 1, str.charAt(i));
+        }
     }
 
     private static void replaceChars(char[] arr, char a, char x, int i) {
