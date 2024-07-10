@@ -31,7 +31,24 @@ public class advanced {
 //        deleteConsecutiveDuplicates(str, 1, str.charAt(0));
 //        System.out.println(str);
 
+        // print subsequences of a string
+        printSubsequences("abc", "", 0);
+    }
 
+    private static void printSubsequences(String str, String currStr, int i) {
+        if(i == str.length()) {
+            if(currStr.isEmpty()) {
+                System.out.println("''");
+            } else {
+                System.out.println(currStr);
+            }
+            return;
+        }
+
+        // not pick
+        printSubsequences(str, currStr, i + 1);
+        // pick
+        printSubsequences(str, currStr+str.charAt(i), i + 1);
     }
 
     private static void deleteConsecutiveDuplicates(StringBuilder str, int i, char prev) {
