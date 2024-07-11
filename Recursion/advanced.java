@@ -1,8 +1,12 @@
 //import java.util.Arrays;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class advanced {
+
+//    public static List<String> ans = new ArrayList<>();
+
     public static void main(String[] args) {
         // recursively print a character array
 //        char[] arr = {'a', 'b', 'c', 'd', 'e'};
@@ -32,7 +36,26 @@ public class advanced {
 //        System.out.println(str);
 
         // print subsequences of a string
-        printSubsequences("abc", "", 0);
+//        printSubsequences("abc", "", 0);
+
+        // store all subsequences of string
+//        storeSubsequences("abc", "", 0);
+////        System.out.println(ans.size());
+//        for(String str: ans) {
+//            System.out.print(str + ", ");
+//        }
+    }
+
+    private static void storeSubsequences(String str, String currStr, int i) {
+        if(i == str.length()) {
+            ans.add(currStr);
+            return;
+        }
+
+        // not pick
+        storeSubsequences(str, currStr, i + 1);
+        // pick
+        storeSubsequences(str, currStr+str.charAt(i), i + 1);
     }
 
     private static void printSubsequences(String str, String currStr, int i) {
