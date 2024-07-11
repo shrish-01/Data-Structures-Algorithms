@@ -44,19 +44,29 @@ public class advanced {
 //        for(String str: ans) {
 //            System.out.print(str + ", ");
 //        }
+
+        // convert string to int
+        String str = "12345";
+        int num = convertStringToInt(str, str.length() - 1, 0);
+        System.out.println(num);
     }
 
-    private static void storeSubsequences(String str, String currStr, int i) {
-        if(i == str.length()) {
-            ans.add(currStr);
-            return;
-        }
-
-        // not pick
-        storeSubsequences(str, currStr, i + 1);
-        // pick
-        storeSubsequences(str, currStr+str.charAt(i), i + 1);
+    private static int convertStringToInt(String str, int i, int currNum) {
+        if(i < 0) return currNum;
+        return convertStringToInt(str, i - 1, (currNum + (str.charAt(i) - '0') * (int)Math.pow(10, str.length() - 1 - i)));
     }
+
+//    private static void storeSubsequences(String str, String currStr, int i) {
+//        if(i == str.length()) {
+//            ans.add(currStr);
+//            return;
+//        }
+//
+//        // not pick
+//        storeSubsequences(str, currStr, i + 1);
+//        // pick
+//        storeSubsequences(str, currStr+str.charAt(i), i + 1);
+//    }
 
     private static void printSubsequences(String str, String currStr, int i) {
         if(i == str.length()) {
