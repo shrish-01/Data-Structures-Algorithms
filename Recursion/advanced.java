@@ -1,8 +1,5 @@
 //import java.util.Arrays;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class advanced {
 
 //    public static List<String> ans = new ArrayList<>();
@@ -51,7 +48,38 @@ public class advanced {
 //        System.out.println(num);
 
         // print all permutations of a string
-        printPermutations("abc", 0); // abc, acb, bac, bca, cab, cba
+//        printPermutations("abc", 0); // abc, acb, bac, bca, cab, cba
+
+        // climb stairs
+//        int ans = climbStairs(5);
+//        System.out.println(ans);
+
+        // tower of hanoi
+//        int ans = towerOfHanoi(5);
+//        System.out.println(ans);
+
+//        towerOfHanoiPrintSteps(3, 'a', 'b', 'c');
+    }
+
+    private static void towerOfHanoiPrintSteps(int n, char a, char b, char c) {
+        if(n == 0) return;
+        towerOfHanoiPrintSteps(n - 1, 'a', 'c', 'b');
+        System.out.println("Disc " + n + " is moved from tower " + a + " to " + b + ".");
+        towerOfHanoiPrintSteps(n - 1, 'c', 'b', 'a');
+    }
+
+    private static int towerOfHanoi(int n) {
+        if(n <= 0) {
+            return 0;
+        }
+
+        return towerOfHanoi(n - 1) + 1 + towerOfHanoi(n - 1);
+    }
+
+    private static int climbStairs(int n) {
+        if(n == 0 || n == 1) return 1;
+        if(n < 0) return 0;
+        return climbStairs(n - 1) + climbStairs(n - 2) + climbStairs(n - 3);
     }
 
     private static void printPermutations(String str, int i) {
@@ -150,3 +178,24 @@ public class advanced {
 //        System.out.print(arr[i] + ", ");
     }
 }
+
+// GFG Code:
+//class Hanoi {
+//
+//    public long count = 0;
+//
+//    public long toh(int n, int from, int to, int aux) {
+//        // Your code here
+//        tohH(n, from, to, aux);
+//        return count;
+//    }
+//
+//    public void tohH(int n, int from, int to, int aux) {
+//        // Your code here
+//        if(n == 0) return;
+//        tohH(n - 1, from, aux, to);
+//        count++;
+//        System.out.println("move disk " + n + " from rod " + from + " to rod " + to);
+//        tohH(n - 1, aux, to, from);
+//    }
+//}
