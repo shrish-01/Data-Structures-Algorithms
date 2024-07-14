@@ -46,9 +46,33 @@ public class advanced {
 //        }
 
         // convert string to int
-        String str = "12345";
-        int num = convertStringToInt(str, str.length() - 1, 0);
-        System.out.println(num);
+//        String str = "12345";
+//        int num = convertStringToInt(str, str.length() - 1, 0);
+//        System.out.println(num);
+
+        // print all permutations of a string
+        printPermutations("abc", 0); // abc, acb, bac, bca, cab, cba
+    }
+
+    private static void printPermutations(String str, int i) {
+        if(i == str.length()) {
+            System.out.println(str);
+            return;
+        }
+        for(int j = i; j < str.length(); j++) {
+            String strEdited = swap(str, i, j);
+            printPermutations(strEdited, i + 1);
+            String strReverseEdited = swap(str, i, j);
+        }
+    }
+
+    private static String swap(String str, int i, int j) {
+        StringBuilder sb = new StringBuilder(str);
+        char temp = sb.charAt(i);
+        sb.setCharAt(i, sb.charAt(j));
+        sb.setCharAt(j, temp);
+
+        return sb.toString();
     }
 
     private static int convertStringToInt(String str, int i, int currNum) {
