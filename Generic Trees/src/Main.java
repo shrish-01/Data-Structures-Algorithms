@@ -10,11 +10,12 @@ class GenericTree<T> {
 public class Main {
     public static void main(String[] args) {
         ArrayList<Integer> treeInput = new ArrayList<>(Arrays.asList(10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1));
-        constructGenericTree(treeInput);
+        GenericTree<Integer> root = constructGenericTree(treeInput);
+        display(root);
     }
 
-    public static void constructGenericTree(ArrayList<Integer> treeInput) {
-        GenericTree<Integer> root;
+    public static GenericTree<Integer> constructGenericTree(ArrayList<Integer> treeInput) {
+        GenericTree<Integer> root = new GenericTree<>();
         Stack<GenericTree<Integer>> st = new Stack<>();
         for(int i = 0; i < treeInput.size(); i++) {
             if(treeInput.get(i) == -1) {
@@ -31,6 +32,22 @@ public class Main {
 
                 st.push(node);
             }
+        }
+
+        return root;
+    }
+
+    public static void display(GenericTree<Integer> node) {
+        String str = node.data + " --> ";
+        for(GenericTree<Integer> child: node.children) {
+            str += child.data + ", ";
+        }
+        str += " ---- (Done)";
+        System.out.println(str);
+
+        for(GenericTree<Integer> child: node.children) {
+//            System.out.println(child.data);
+            display(child);
         }
     }
 }
