@@ -10,7 +10,9 @@ public class Main {
         ArrayList<Integer> treeInput = new ArrayList<>(Arrays.asList(10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1));
         GenericTree<Integer> root = constructGenericTree(treeInput);
         display(root);
-        int ans = sizeOfGenericTree(root);
+//        int ans = sizeOfGenericTree(root);
+//        int ans = maximumOfGenericTree(root);
+        int ans = heightOfGenericTree(root);
         System.out.println(ans);
     }
 
@@ -76,5 +78,27 @@ public class Main {
 
         size += 1;
         return size;
+    }
+
+    public static int maximumOfGenericTree(GenericTree<Integer> root) {
+        int maxi = Integer.MIN_VALUE;
+        for(GenericTree<Integer> node: root.children) {
+            int maxOfSubtree = maximumOfGenericTree(node);
+            maxi = Math.max(maxi, maxOfSubtree);
+        }
+
+        maxi = Math.max(maxi, root.data);
+        return maxi;
+    }
+
+    public static int heightOfGenericTree(GenericTree<Integer> root) {
+        // in terms of edges, initialize height as -1, and in terms of node, initialize as 0;
+        int height = 0;
+        for(GenericTree<Integer> child: root.children) {
+            int childHeight = heightOfGenericTree(child);
+            height = Math.max(childHeight, height);
+        }
+        height += 1;
+        return height;
     }
 }
