@@ -14,6 +14,7 @@ public class Main {
 //        int ans = maximumOfGenericTree(root);
         int ans = heightOfGenericTree(root);
         System.out.println(ans);
+        genericTreeTraversal(root);
     }
 
     public static GenericTree<Integer> constructGenericTree(ArrayList<Integer> treeInput) {
@@ -100,5 +101,17 @@ public class Main {
         }
         height += 1;
         return height;
+    }
+
+    public static void genericTreeTraversal(GenericTree<Integer> root) {
+        System.out.println("Node Pre " + root.data);
+
+        for(GenericTree<Integer> child: root.children) {
+            System.out.println("Edge Pre " + root.data + "--" + child.data);
+            genericTreeTraversal(child);
+            System.out.println("Edge Post " + root.data + "--" + child.data);
+        }
+
+        System.out.println("Node Post " + root.data);
     }
 }
