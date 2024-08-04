@@ -15,6 +15,7 @@ public class Main {
         int ans = heightOfGenericTree(root);
         System.out.println(ans);
         genericTreeTraversal(root);
+        levelOrderTraversal(root);
     }
 
     public static GenericTree<Integer> constructGenericTree(ArrayList<Integer> treeInput) {
@@ -113,5 +114,18 @@ public class Main {
         }
 
         System.out.println("Node Post " + root.data);
+    }
+
+    public static void levelOrderTraversal(GenericTree<Integer> root) {
+        Queue<GenericTree<Integer>> q = new LinkedList<>();
+        q.offer(root);
+
+        while(!q.isEmpty()) {
+            GenericTree<Integer> node = q.poll();
+            System.out.println(node.data);
+            for(GenericTree<Integer> n: node.children) {
+                q.offer(n);
+            }
+        }
     }
 }
