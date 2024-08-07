@@ -13,13 +13,14 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Integer> treeInput = new ArrayList<>(Arrays.asList(10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1));
         GenericTree<Integer> root = constructGenericTree(treeInput);
-        display(root);
+//        display(root);
 //        int ans = sizeOfGenericTree(root);
 //        int ans = maximumOfGenericTree(root);
-        int ans = heightOfGenericTree(root);
-        System.out.println(ans);
-        genericTreeTraversal(root);
-        levelOrderTraversal(root);
+//        int ans = heightOfGenericTree(root);
+//        System.out.println(ans);
+//        genericTreeTraversal(root);
+//        levelOrderTraversal(root);
+        levelOrderZigZag(root);
     }
 
     public static GenericTree<Integer> constructGenericTree(ArrayList<Integer> treeInput) {
@@ -137,6 +138,33 @@ public class Main {
                 for(GenericTree<Integer> n: node.children) {
                     q.offer(n);
                 }
+            }
+        }
+    }
+
+    public static void levelOrderZigZag(GenericTree<Integer> root) {
+        Stack<GenericTree<Integer>> parentStack = new Stack<>();
+        Stack<GenericTree<Integer>> childStack = new Stack<>();
+        parentStack.push(root);
+        int level = 1;
+        while(!parentStack.isEmpty() || !childStack.isEmpty()) {
+            GenericTree<Integer> node = parentStack.pop();
+            if(level % 2 == 0) { // even, traverse right to left
+                System.out.print(node.data + " ");
+                for(int i = node.children.size() - 1; i >= 0; i--) {
+                    childStack.push(node.children.get(i));
+                }
+            } else { // odd, traverse left to right
+                System.out.print(node.data + " ");
+                for(GenericTree<Integer> n: node.children) {
+                    childStack.push(n);
+                }
+            }
+            if(parentStack.isEmpty()) {
+                level++;
+                parentStack = childStack;
+                childStack = new Stack<GenericTree<Integer>>();
+                System.out.println();
             }
         }
     }
