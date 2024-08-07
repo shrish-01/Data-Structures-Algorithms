@@ -3,6 +3,10 @@ import java.util.*;
 class GenericTree<T> {
     T data;
     ArrayList<GenericTree<T>> children = new ArrayList<>();
+    public GenericTree() {};
+    public GenericTree(T data) {
+        this.data = data;
+    }
 }
 
 public class Main {
@@ -119,12 +123,20 @@ public class Main {
     public static void levelOrderTraversal(GenericTree<Integer> root) {
         Queue<GenericTree<Integer>> q = new LinkedList<>();
         q.offer(root);
+        q.offer(null);
 
         while(!q.isEmpty()) {
             GenericTree<Integer> node = q.poll();
-            System.out.println(node.data);
-            for(GenericTree<Integer> n: node.children) {
-                q.offer(n);
+            if(node == null) {
+                System.out.println();
+                if(!q.isEmpty()) {
+                    q.offer(null);
+                }
+            } else {
+                System.out.print(node.data + " ");
+                for(GenericTree<Integer> n: node.children) {
+                    q.offer(n);
+                }
             }
         }
     }
